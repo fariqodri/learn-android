@@ -8,30 +8,33 @@
 
     <TextView
         android:id="@+id/hello"
-        android:layout_width="300px"
-        android:layout_height="60px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Hello World!"
         android:textAlignment="center"
-        android:textSize="20dp"
+        android:textSize="20sp"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276" />
+        app:layout_constraintVertical_bias="0.378" />
 
     <Button
-        app:layout_constraintTop_toBottomOf="@id/hello"
-        app:layout_constraintLeft_toLeftOf="@id/hello"
-        app:layout_constraintRight_toRightOf="@id/hello"
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:onClick="buttonOnClick"
         android:text="Coba"
         android:textAlignment="gravity"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="165dp" />
+        android:background="@color/buttonBgr"
+        android:textColor="@color/buttonText"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintLeft_toLeftOf="@id/hello"
+        app:layout_constraintRight_toRightOf="@id/hello"
+        app:layout_constraintTop_toBottomOf="@id/hello" />
 
 
 </android.support.constraint.ConstraintLayout>

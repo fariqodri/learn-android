@@ -1,5 +1,6 @@
 package com.kuwait.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d(msg, "onCreate() event");
     }
     protected void buttonOnClick(View view) {
-        Toast toast = Toast.makeText(this, "47RONIN", Toast.LENGTH_LONG);
+        Toast.makeText(this, "47RONIN", Toast.LENGTH_LONG);
         view = findViewById(R.id.button);
     }
+
 }
