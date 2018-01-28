@@ -17,9 +17,10 @@ public class MainActivity extends AppCompatActivity {
         String msg = "Android: ";
         Log.d(msg, "onCreate() event");
     }
-    protected void buttonOnClick(View view) {
-        Toast.makeText(this, "47RONIN", Toast.LENGTH_LONG);
-        view = findViewById(R.id.button);
+    public void onClick(View view) {
+        //Toast.makeText(this, "47RONIN", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Main2Activity.class);
+        startActivity(intent);
     }
 
 }
