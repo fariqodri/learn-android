@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(msg, "onCreate() event");
     }
     protected void buttonOnClick(View view) {
-        Toast.makeText(this, "47RONIN", Toast.LENGTH_LONG);
+        Toast.makeText(this, "47RONIN", Toast.LENGTH_LONG).show();
         view = findViewById(R.id.button);
     }
 
