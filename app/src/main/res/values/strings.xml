@@ -17,4 +17,5 @@
     <string name="buttonMin">-</string>
     <string name="buttonClear">C</string>
     <string name="buttonEq">=</string>
+    <string name="syntaxError">SYNTAX ERROR</string>
 </resources>
