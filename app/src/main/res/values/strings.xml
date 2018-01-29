@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Qori\'s App</string>
+    <string name="app_name">Qori\'s Calculator</string>
     <string name="button1">1</string>
     <string name="button2">2</string>
     <string name="button3">3</string>
@@ -11,11 +11,12 @@
     <string name="button9">9</string>
     <string name="button0">0</string>
     <string name="buttonDot">.</string>
-    <string name="buttonMult">*</string>
-    <string name="buttonAdd">+</string>
-    <string name="buttonDiv">:</string>
-    <string name="buttonMin">-</string>
+    <string name="buttonMult"> * </string>
+    <string name="buttonAdd"> + </string>
+    <string name="buttonDiv"> : </string>
+    <string name="buttonMin"> - </string>
     <string name="buttonClear">C</string>
     <string name="buttonEq">=</string>
+    <string name="buttonDel">DEL</string>
     <string name="syntaxError">SYNTAX ERROR</string>
 </resources>
