@@ -1,5 +1,6 @@
 package com.kuwait.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,14 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        final View home = findViewById(R.id.navigation_home);
+        final View notes = findViewById( R.id.navigation_notes );
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
         onClicks();
     }
 
@@ -72,9 +81,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button0));
                             states.push(R.id.button0);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -87,9 +93,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button1));
                             states.push(R.id.button1);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -102,9 +105,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button2));
                             states.push(R.id.button2);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -117,9 +117,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button3));
                             states.push(R.id.button3);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -132,9 +129,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button4));
                             states.push(R.id.button4);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -147,9 +141,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button5));
                             states.push(R.id.button5);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -162,9 +153,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button6));
                             states.push(R.id.button6);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -177,9 +165,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button7));
                             states.push(R.id.button7);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -204,9 +189,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button9));
                             states.push(R.id.button9);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -219,9 +201,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.buttonDot));
                             states.push(R.id.buttonDot);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -233,9 +212,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.buttonAdd));
                             states.add(R.id.buttonAdd);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -258,9 +234,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.buttonMult));
                             states.add(R.id.buttonMult);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -272,9 +245,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.buttonDiv));
                             states.add(R.id.buttonDiv);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -286,9 +256,6 @@ public class Main2Activity extends AppCompatActivity {
                             inside.setLength(0);
                             states.add(R.id.buttonClear);
                             res.setText(inside);
-                            if(res.getLineCount() > 1) {
-                                res.setTextSize( res.getTextSize() / 2 );
-                            }
                         }
                     });
                     break;
@@ -314,7 +281,7 @@ public class Main2Activity extends AppCompatActivity {
         if(!Character.isDigit(all.charAt(all.length()-1))){
             return "SYNTAX ERROR";
         }
-        String[] numbers = all.split("[*:+-]");
+        String[] numbers = all.split("[*/+-]");
         if(numbers.length < 2) {
             return all;
         }
@@ -322,13 +289,14 @@ public class Main2Activity extends AppCompatActivity {
             String[] operators = all.replaceAll( "\\d", "").split("");
             ArrayList<String> nums = new ArrayList<>(Arrays.asList(numbers));
             ArrayList<String> ops = new ArrayList<>(Arrays.asList(operators));
-            ops.remove(".");
+            ops.remove("."); ops.remove("");
             int indexMult = ops.indexOf("*");
-            int indexDiv = ops.indexOf(":");
+            int indexDiv = ops.indexOf("/");
             int indexAdd = ops.indexOf("+");
             int indexSub = ops.indexOf("-");
 
             if(indexMult != -1 && (indexMult < indexDiv || indexDiv == -1)) {
+                Log.d("ops", ops+"");
                 String first = nums.get(indexMult);
                 String second = nums.get(indexMult+1);
                 double resMult;
@@ -378,7 +346,8 @@ public class Main2Activity extends AppCompatActivity {
                         if(Integer.parseInt(nums.get(indexDiv)) % Integer.parseInt(nums.get(indexDiv+1)) == 0){
                             int resDivInt = Integer.parseInt(nums.get(indexDiv)) / Integer.parseInt(nums.get(indexDiv+1));
                             String inserted = Integer.toString(resDivInt);
-                            String replaced = nums.get(indexDiv) + ":" + nums.get(indexDiv+1);
+                            String replaced = nums.get(indexDiv) + "/" + nums.get(indexDiv+1);
+                            Log.d("div", replaced);
                             all = all.replace(replaced, inserted);
                             return calculate(all);
                         }
@@ -389,7 +358,7 @@ public class Main2Activity extends AppCompatActivity {
                 }
                 String inserted = Double.toString(resDiv);
                 if(inserted.split("\\.")[1].length() > 8) inserted = String.format(Locale.ENGLISH,"%.8f", resDiv);
-                String replaced = nums.get(indexDiv) + ":" + nums.get(indexDiv+1);
+                String replaced = nums.get(indexDiv) + "/" + nums.get(indexDiv+1);
                 all = all.replace(replaced, inserted);
                 return calculate(all);
             }
