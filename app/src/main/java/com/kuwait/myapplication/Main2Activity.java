@@ -5,16 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.Locale;
 import java.util.Stack;
 
 public class Main2Activity extends AppCompatActivity {
@@ -78,6 +72,9 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button0));
                             states.push(R.id.button0);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -90,6 +87,9 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button1));
                             states.push(R.id.button1);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -102,6 +102,9 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button2));
                             states.push(R.id.button2);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -114,6 +117,9 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button3));
                             states.push(R.id.button3);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -126,6 +132,9 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button4));
                             states.push(R.id.button4);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -138,6 +147,9 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button5));
                             states.push(R.id.button5);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -150,6 +162,9 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button6));
                             states.push(R.id.button6);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -162,6 +177,9 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button7));
                             states.push(R.id.button7);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -186,6 +204,9 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.button9));
                             states.push(R.id.button9);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -196,9 +217,11 @@ public class Main2Activity extends AppCompatActivity {
                         public void onClick(View view) {
                             if(states.peek() == R.id.buttonDot) inside.setLength(0);
                             inside.append(getString(R.string.buttonDot));
-                            Log.d("Dot", ".");
                             states.push(R.id.buttonDot);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -210,6 +233,9 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.buttonAdd));
                             states.add(R.id.buttonAdd);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -232,6 +258,9 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.buttonMult));
                             states.add(R.id.buttonMult);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -243,6 +272,9 @@ public class Main2Activity extends AppCompatActivity {
                             inside.append(getString(R.string.buttonDiv));
                             states.add(R.id.buttonDiv);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -254,6 +286,9 @@ public class Main2Activity extends AppCompatActivity {
                             inside.setLength(0);
                             states.add(R.id.buttonClear);
                             res.setText(inside);
+                            if(res.getLineCount() > 1) {
+                                res.setTextSize( res.getTextSize() / 2 );
+                            }
                         }
                     });
                     break;
@@ -279,94 +314,83 @@ public class Main2Activity extends AppCompatActivity {
         if(!Character.isDigit(all.charAt(all.length()-1))){
             return "SYNTAX ERROR";
         }
-        String[] numbers = all.split("[\\*||\\:||\\+||\\-]");
+        String[] numbers = all.split("[*:+-]");
         if(numbers.length < 2) {
             return all;
         }
         else {
-            String[] operators = all.replaceAll("\\d", "").split("");
+            String[] operators = all.replaceAll( "\\d", "").split("");
             ArrayList<String> nums = new ArrayList<>(Arrays.asList(numbers));
             ArrayList<String> ops = new ArrayList<>(Arrays.asList(operators));
-            ops.remove(0);
             ops.remove(".");
             int indexMult = ops.indexOf("*");
             int indexDiv = ops.indexOf(":");
             int indexAdd = ops.indexOf("+");
             int indexSub = ops.indexOf("-");
 
-            if(indexMult != -1) {
+            if(indexMult != -1 && (indexMult < indexDiv || indexDiv == -1)) {
                 String first = nums.get(indexMult);
                 String second = nums.get(indexMult+1);
+                double resMult;
                 if(first.contains(".")) {
                     if(second.contains(".")) {
-                        double resMult = Double.parseDouble(nums.get(indexMult)) * Double.parseDouble(nums.get(indexMult+1));
-                        String inserted = Double.toString(resMult);
-                        String replaced = nums.get(indexMult) + "*" + nums.get(indexMult+1);
-                        all = all.replace(replaced, inserted);
+                        resMult = Double.parseDouble(nums.get(indexMult)) * Double.parseDouble(nums.get(indexMult+1));
                     }
                     else {
-                        double resMult = Double.parseDouble(nums.get(indexMult)) * Integer.parseInt(nums.get(indexMult+1));
-                        String inserted = Double.toString(resMult);
-                        String replaced = nums.get(indexMult) + "*" + nums.get(indexMult+1);
-                        all = all.replace(replaced, inserted);
+                        resMult = Double.parseDouble(nums.get(indexMult)) * Integer.parseInt(nums.get(indexMult+1));
                     }
                 }
                 else {
                     if(second.contains(".")) {
-                        double resMult = Integer.parseInt(nums.get(indexMult)) * Double.parseDouble(nums.get(indexMult+1));
-                        String inserted = Double.toString(resMult);
-                        String replaced = nums.get(indexMult) + "*" + nums.get(indexMult+1);
-                        all = all.replace(replaced, inserted);
+                        resMult = Integer.parseInt(nums.get(indexMult)) * Double.parseDouble(nums.get(indexMult+1));
                     }
                     else {
-                        int resMult = Integer.parseInt(nums.get(indexMult)) * Integer.parseInt(nums.get(indexMult+1));
-                        String inserted = Integer.toString(resMult);
+                        int resMultInt = Integer.parseInt(nums.get(indexMult)) * Integer.parseInt(nums.get(indexMult+1));
+                        String inserted = Integer.toString(resMultInt);
                         String replaced = nums.get(indexMult) + "*" + nums.get(indexMult+1);
                         all = all.replace(replaced, inserted);
+                        return calculate(all);
                     }
                 }
+                String inserted = Double.toString(resMult);
+                String replaced = nums.get(indexMult) + "*" + nums.get(indexMult+1);
+                all = all.replace(replaced, inserted);
                 return calculate(all);
             }
 
-            if(indexDiv != -1) {
+            if(indexDiv != -1 && (indexDiv < indexMult || indexMult == -1)) {
                 String first = nums.get(indexDiv);
                 String second = nums.get(indexDiv+1);
+                double resDiv;
                 if(first.contains(".")) {
                     if(second.contains(".")) {
-                        double resDiv = Double.parseDouble(nums.get(indexDiv)) / Double.parseDouble(nums.get(indexDiv + 1));
-                        String inserted = String.format("%.8f", resDiv);
-                        String replaced = nums.get(indexDiv) + ":" + nums.get(indexDiv + 1);
-                        all = all.replace(replaced, inserted);
+                        resDiv = Double.parseDouble(nums.get(indexDiv)) / Double.parseDouble(nums.get(indexDiv + 1));
                     }
                     else {
-                        double resDiv = Double.parseDouble(nums.get(indexDiv)) / Integer.parseInt(nums.get(indexDiv + 1));
-                        String inserted = String.format("%.8f", resDiv);
-                        String replaced = nums.get(indexDiv) + ":" + nums.get(indexDiv + 1);
-                        all = all.replace(replaced, inserted);
+                        resDiv = Double.parseDouble(nums.get(indexDiv)) / Integer.parseInt(nums.get(indexDiv + 1));
                     }
                 }
                 else {
                     if(second.contains(".")) {
-                        double resDiv = Integer.parseInt(nums.get(indexDiv)) / Double.parseDouble(nums.get(indexDiv+1));
-                        String inserted = String.format("%.8f", resDiv);
-                        String replaced = nums.get(indexDiv) + ":" + nums.get(indexDiv+1);
-                        all = all.replace(replaced, inserted);
+                        resDiv = Integer.parseInt(nums.get(indexDiv)) / Double.parseDouble(nums.get(indexDiv+1));
                     }
                     else {
                         if(Integer.parseInt(nums.get(indexDiv)) % Integer.parseInt(nums.get(indexDiv+1)) == 0){
-                            int resDiv = Integer.parseInt(nums.get(indexDiv)) / Integer.parseInt(nums.get(indexDiv+1));
-                            String inserted = String.format("%.8f", resDiv);
+                            int resDivInt = Integer.parseInt(nums.get(indexDiv)) / Integer.parseInt(nums.get(indexDiv+1));
+                            String inserted = Integer.toString(resDivInt);
                             String replaced = nums.get(indexDiv) + ":" + nums.get(indexDiv+1);
                             all = all.replace(replaced, inserted);
+                            return calculate(all);
                         }
                         else {
-                            double resDiv = Double.parseDouble(nums.get(indexDiv)) / Double.parseDouble(nums.get(indexDiv+1));
-                            String inserted = String.format("%.8f", resDiv);
-                            String replaced = nums.get(indexDiv) + ":" + nums.get(indexDiv+1);
-                            all = all.replace(replaced, inserted);
+                            resDiv = Double.parseDouble(nums.get(indexDiv)) / Double.parseDouble(nums.get(indexDiv+1));
                         }
                     }
                 }
+                String inserted = Double.toString(resDiv);
+                if(inserted.split("\\.")[1].length() > 8) inserted = String.format(Locale.ENGLISH,"%.8f", resDiv);
+                String replaced = nums.get(indexDiv) + ":" + nums.get(indexDiv+1);
+                all = all.replace(replaced, inserted);
                 return calculate(all);
             }
 
@@ -374,68 +398,60 @@ public class Main2Activity extends AppCompatActivity {
                 Log.d("List", nums+" "+ops);
                 String first = nums.get(indexAdd);
                 String second = nums.get(indexAdd+1);
+                double resAdd;
                 if(first.contains(".")) {
                     if(second.contains(".")) {
-                        double resAdd = Double.parseDouble(nums.get(indexAdd)) + Double.parseDouble(nums.get(indexAdd+1));
-                        String inserted = Double.toString(resAdd);
-                        String replaced = nums.get(indexAdd) + "+" + nums.get(indexAdd+1);
-                        all = all.replace(replaced, inserted);
+                        resAdd = Double.parseDouble(nums.get(indexAdd)) + Double.parseDouble(nums.get(indexAdd+1));
                     }
                     else {
-                        double resAdd = Double.parseDouble(nums.get(indexAdd)) + Integer.parseInt(nums.get(indexAdd+1));
-                        String inserted = Double.toString(resAdd);
-                        String replaced = nums.get(indexAdd) + "+" + nums.get(indexAdd+1);
-                        all = all.replace(replaced, inserted);
+                        resAdd = Double.parseDouble(nums.get(indexAdd)) + Integer.parseInt(nums.get(indexAdd+1));
                     }
                 }
                 else {
                     if(second.contains(".")) {
-                        double resAdd = Integer.parseInt(nums.get(indexAdd)) + Double.parseDouble(nums.get(indexAdd+1));
-                        String inserted = Double.toString(resAdd);
-                        String replaced = nums.get(indexAdd) + "+" + nums.get(indexAdd+1);
-                        all = all.replace(replaced, inserted);
+                        resAdd = Integer.parseInt(nums.get(indexAdd)) + Double.parseDouble(nums.get(indexAdd+1));
                     }
                     else {
-                        int resAdd = Integer.parseInt(nums.get(indexAdd)) + Integer.parseInt(nums.get(indexAdd+1));
-                        String inserted = Integer.toString(resAdd);
+                        int resAddInt = Integer.parseInt(nums.get(indexAdd)) + Integer.parseInt(nums.get(indexAdd+1));
+                        String inserted = Integer.toString(resAddInt);
                         String replaced = nums.get(indexAdd) + "+" + nums.get(indexAdd+1);
                         all = all.replace(replaced, inserted);
+                        return calculate(all);
                     }
                 }
+                String inserted = Double.toString(resAdd);
+                String replaced = nums.get(indexAdd) + "+" + nums.get(indexAdd+1);
+                all = all.replace(replaced, inserted);
                 return calculate(all);
             }
 
             if(indexSub != -1) {
                 String first = nums.get(indexSub);
                 String second = nums.get(indexSub+1);
+                double resSub;
                 if(first.contains(".")) {
                     if(second.contains(".")) {
-                        double resSub= Double.parseDouble(nums.get(indexSub)) - Double.parseDouble(nums.get(indexSub+1));
-                        String inserted = Double.toString(resSub);
-                        String replaced = nums.get(indexSub) + "-" + nums.get(indexSub+1);
-                        all = all.replace(replaced, inserted);
+                        resSub= Double.parseDouble(nums.get(indexSub)) - Double.parseDouble(nums.get(indexSub+1));
                     }
                     else {
-                        double resSub = Double.parseDouble(nums.get(indexSub)) - Integer.parseInt(nums.get(indexSub+1));
-                        String inserted = Double.toString(resSub);
-                        String replaced = nums.get(indexSub) + "-" + nums.get(indexSub+1);
-                        all = all.replace(replaced, inserted);
+                        resSub = Double.parseDouble(nums.get(indexSub)) - Integer.parseInt(nums.get(indexSub+1));
                     }
                 }
                 else {
                     if(second.contains(".")) {
-                        double resSub = Integer.parseInt(nums.get(indexSub)) - Double.parseDouble(nums.get(indexSub+1));
-                        String inserted = Double.toString(resSub);
-                        String replaced = nums.get(indexSub) + "-" + nums.get(indexSub+1);
-                        all = all.replace(replaced, inserted);
+                        resSub = Integer.parseInt(nums.get(indexSub)) - Double.parseDouble(nums.get(indexSub+1));
                     }
                     else {
-                        int resSub = Integer.parseInt(nums.get(indexSub)) - Integer.parseInt(nums.get(indexSub+1));
-                        String inserted = Integer.toString(resSub);
+                        int resSubInt = Integer.parseInt(nums.get(indexSub)) - Integer.parseInt(nums.get(indexSub+1));
+                        String inserted = Integer.toString(resSubInt);
                         String replaced = nums.get(indexSub) + "-" + nums.get(indexSub+1);
                         all = all.replace(replaced, inserted);
+                        return calculate(all);
                     }
                 }
+                String inserted = Double.toString(resSub);
+                String replaced = nums.get(indexSub) + "-" + nums.get(indexSub+1);
+                all = all.replace(replaced, inserted);
                 return calculate(all);
             }
             return "";

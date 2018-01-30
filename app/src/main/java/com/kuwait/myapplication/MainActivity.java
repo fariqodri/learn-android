@@ -14,12 +14,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String msg = "Android: ";
-        Log.d(msg, "onCreate() event");
-    }
-    public void onClick(View view) {
-        //Toast.makeText(this, "47RONIN", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, Main2Activity.class);
-        startActivity(intent);
+        final View calculator = findViewById(R.id.navigation_calculator);
+        final View notes = findViewById( R.id.navigation_notes );
+        calculator.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getApplicationContext(), Main2Activity.class );
+                startActivity( intent );
+            }
+        } );
+        notes.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        } );
     }
 }

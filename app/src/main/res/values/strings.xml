@@ -19,4 +19,8 @@
     <string name="buttonEq">=</string>
     <string name="buttonDel">DEL</string>
     <string name="syntaxError">SYNTAX ERROR</string>
+    <string name="title_activity_main3">Main3Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_calculator">Calculator</string>
+    <string name="title_notes">Notes</string>
 </resources>
